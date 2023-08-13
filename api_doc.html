@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            color: rgb(225, 255, 255);
+            background-color: rgb(1, 14, 17);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        body[data-iframe="true"] > *:not(#second):not(#third) {
+            display: none;
+        }
+        h2 {
+            margin: 50px;
+        }
+        .box {
+            width: 40%;
+            text-align: center;
+            padding: 20px;
+            margin: 5px;
+            background-color: rgb(12, 36, 36);
+            font-size: larger;
+        }
+        .box button {
+            background-color: rgb(1, 14, 17);
+            border: none;
+            border-radius: 7px;
+            padding: 15px 40px;
+            font-weight: bolder;
+            color: rgb(225, 255, 255);
+        }
+        /* .gangan {
+            text-align: left;
+        } */
+        pre {
+            background-color: #f4f4f4;
+            color: rgb(12, 36, 36);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: justify;
+        }
+        pre button {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>API Documentation</h2>
+    <div class="box" id="second">
+        <h3>Our Calcuator :</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, ducimus consequuntur quod pariatur quisquam esse sit alias corporis beatae, ea nam nisi nulla excepturi perspiciatis at repellat accusamus id porro.</p>
+    </div>
+    <div class="box" id="second">
+        <h3>How to iFRAME Our Calcuator to your site:</h3>
+        <p class="gangan">Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
+        <pre>
+<code class="language-html" id="iframeCode">
+&lt;iframe src="index.html?iframe=true" frameborder="0"
+width="400" height="400"&gt;&lt;/iframe&gt;
+</code>
+                    <button onclick="copyCodeToClipboard()">Copy Code</button>
+        </pre>
+    </div>
+    <div class="box">
+        <a href="index.html"><button>MAIN SITE</button></a>
+        <a href="./thridparty_site.html"><button>SOME THIRD-PARTY SITE</button></a>
+    </div>
+
+
+    <!-- Use Javascript to detect iFrame mode -->
+    <script>
+        function copyCodeToClipboard() {
+            const code = document.getElementById("iframeCode").innerText;
+            const textarea = document.createElement("textarea");
+            textarea.value = code;
+
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            document.execCommand("copy")
+            document.body.removeChild(textarea);
+
+            alert("Code copied to clipboard!");
+        }
+    </script>
+</body>
+</html>

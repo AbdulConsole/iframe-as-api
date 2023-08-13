@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Display Here</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+        footer {
+            width: 100%;
+            height: 60px;
+            position: absolute;
+            bottom: 0;
+            /* right: 0; */
+
+            color: rgb(225, 255, 255);
+            background-color: rgb(1, 14, 17);
+            
+        }
+        footer a {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+        footer a button {
+            margin: auto auto;
+            background-color: rgb(12, 36, 36);
+            border: none;
+            border-radius: 7px;
+            padding: 15px 40px;
+            font-weight: bolder;
+            color: rgb(225, 255, 255);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- <iframe src="./index.html" frameborder="0"></iframe> -->
+    <iframe src="index.html?iframe=true" frameborder="0" width="400" height="400"></iframe>
+
+    <footer>
+        <a href="./index.html"><button>Main site</button></a>
+    </footer>
+</body>
+</html>

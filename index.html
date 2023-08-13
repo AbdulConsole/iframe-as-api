@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            color: rgb(225, 255, 255);
+            background-color: rgb(1, 14, 17);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        /* body[data-iframe="true"] > *:not(#second):not(#third) { */
+        body[data-iframe="true"] > *:not(#second) {
+            display: none;
+        }
+        h2 {
+            margin: 50px;
+        }
+        .box {
+            width: 40%;
+            text-align: center;
+            padding: 20px;
+            margin: 5px;
+            background-color: rgb(12, 36, 36);
+            font-size: larger;
+        }
+        .box button {
+            background-color: rgb(1, 14, 17);
+            border: none;
+            border-radius: 7px;
+            padding: 15px 40px;
+            font-weight: bolder;
+            color: rgb(225, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <h2>THE MAIN SITE</h2>
+    <div class="box" id="first">The first box</div>
+    <div class="box" id="second">Our Wonderful Calculator</div>
+    <div class="box" id="third">The third box</div>
+    <div class="box">
+        <a href="./thridparty_site.html"><button>OPEN IFRAME</button></a>
+        <a href="./api_doc.html"><button>API Documentation</button></a>
+    </div>
+
+
+    <!-- Use Javascript to detect iFrame mode -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if page loaded is inside iframe
+            function inIframe() {
+                try {
+                    return window.self !== window.top;
+                } catch (e) {
+                    return true;
+                }
+            }
+
+            // If page is in iframe
+            if (inIframe()) {
+                // Check if URL has the parameter 'iframe=true'
+                if (new URL(window.location.href).searchParams.get('iframe') !== 'true') {
+                    // If parameter is missing, clear the body content
+                    document.body.innerHTML = 'Unauthorized access!';
+                } else {
+                    // Add the 'data-iframe' attribute to the body
+                    document.body.setAttribute('data-iframe', 'true');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
